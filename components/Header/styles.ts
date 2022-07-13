@@ -6,16 +6,20 @@ export const Container = styled.header`
     display: flex;
     justify-content: center;
 
+    width: 100%;
+    
     padding: .5rem 0;
+
+    background: ${colors.white};
 
     border-bottom: 1px solid ${colors.gray200};
 
     div.content {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
-        width: 80%;
+        width: 100%;
 
         h2.title {
             color: ${colors.blackDark};
@@ -57,6 +61,42 @@ export const Container = styled.header`
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
+        }
+    }
+
+    @media(max-width: 780px) {
+        div.content {
+            h2.title {
+                font-size: 2rem;
+            }
+
+            nav.icons {
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media(max-width: 650px) {
+        div.content {
+            h2.title {
+                font-size: 1.75rem;
+            }
+
+            div.search-content {
+                gap: .5rem;
+                padding: .5rem .5rem;
+
+                svg {
+                    width: .75rem;
+                    height: .75rem;
+                }
+
+                input.search {
+                    font-size: .75rem;
+                }
+            }
         }
     }
 `;

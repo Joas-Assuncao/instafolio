@@ -1,13 +1,29 @@
+import { useEffect, useState } from 'react';
 import { MagnifyingGlass } from 'phosphor-react';
-import colors from '../../styles/colors';
+
+import { apiForPersonalInfo } from '../../api';
+
 import { LogoActivity } from '../Icons/LogoActivity';
 import { LogoFindPeople } from '../Icons/LogoFindPeople';
 import { LogoHome } from '../Icons/LogoHome';
 import { LogoMessenger } from '../Icons/LogoMessenger';
 import { LogoNewPost } from '../Icons/LogoNewPost';
+
+import colors from '../../styles/colors';
 import { Container } from './styles';
 
 export function Header() {
+    const [iconProfile, setIconProfile] = useState('');
+    
+    useEffect(() => {
+        apiForPersonalInfo.get('')
+            .then(response => response.data)
+            .then(dataProfileUser => {
+                setIconProfile(dataProfileUser.avatar_url);
+            })
+            .catch(err => console.error(err));
+    }, [])
+
     return (
         <Container>
             <div className="content">
@@ -34,7 +50,7 @@ export function Header() {
                     <LogoNewPost />
                     <LogoFindPeople />
                     <LogoActivity />
-                    <img alt="joas_junior_'s profile" className="" style={{ width: '32px', height: '32px', borderRadius: '50%' }} src="https://github.com/Joas-Assuncao.png" />
+                    <img alt="Icon profile" style={{ width: '32px', height: '32px', borderRadius: '50%' }} src={iconProfile} />
                 </nav>
             </div>
         </Container>
