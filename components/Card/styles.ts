@@ -15,6 +15,23 @@ export const ContainerCard = styled.div`
 
     box-shadow: 0 0 10px 1px rgba(5, 16, 39, .3);
 
+    &:hover {
+        align-items: center;
+        opacity: .5;
+
+        strong {
+            display: none;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+    }
+
     strong {
         width: 100%;
 
@@ -41,23 +58,6 @@ export const ContainerCard = styled.div`
         font-size: 1.5rem;
         font-weight: bold;
         text-align: center;
-    }
-
-    &:hover {
-        align-items: center;
-        opacity: .5;
-
-        strong {
-            display: none;
-        }
-
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-        }
     }
 
     @media(max-width: 1000px) {

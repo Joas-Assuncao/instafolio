@@ -6,8 +6,7 @@ export const Container = styled.header`
     display: flex;
     align-items: flex-start;
     gap: 7rem;
-
-    margin-top: 1.25rem;
+    
     margin-bottom: 5rem;
 
     padding: 0 1rem;
@@ -30,7 +29,7 @@ export const Container = styled.header`
         
         .name {
             font-size: 1.75rem;
-            font-weight: 100;
+            font-weight: 300;
             margin-bottom: 2rem;
         }
 

@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        font-family: 'Loto', sans-serif;
+        font-family: 'Lato', sans-serif;
     }
 
     body {

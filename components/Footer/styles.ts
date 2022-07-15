@@ -11,6 +11,7 @@ export const ContainerFooter = styled.footer`
     width: 100%;
 
     padding: 1rem 2rem;
+    margin-top: 3rem;
 
     text-align: center;
     

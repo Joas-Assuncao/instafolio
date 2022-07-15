@@ -5,10 +5,11 @@ import colors from '../../styles/colors';
 export const Container = styled.header`
     display: flex;
     justify-content: center;
-
+    z-index: 1;
     width: 100%;
     
     padding: .5rem 0;
+    margin-bottom: 1.25rem;
 
     background: ${colors.white};
 
