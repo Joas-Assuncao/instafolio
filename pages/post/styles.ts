@@ -34,8 +34,13 @@ export const Container = styled.main`
                 flex-direction: column;
                 gap: .25rem;
 
-                strong {
+                span {
                     font-size: .875rem;
+                    font-weight: 600;
+                    
+                    a {
+                        color: ${colors.blackDark};
+                    }
                 }
 
                 small {
@@ -56,29 +61,45 @@ export const Container = styled.main`
 
             padding: .625rem;
 
-            div.icons {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                
-                width: 100%;
+            div.interactions {
+                div.icons {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    
+                    width: 100%;
 
-                padding: .5rem 0;
+                    padding: .5rem 0;
 
-                div.primary-icons {
-                    svg:not(:first-of-type) {
-                        margin-left: .75rem;
+                    div.primary-icons {
+                        svg:not(:first-of-type) {
+                            margin-left: .75rem;
+                        }
                     }
+                }
+
+                div.numbers-interactions {
+                    margin-bottom: .5rem;
                 }
             }
 
             p {
                 font-size: .875rem;
-                font-weight: 100;
+                font-weight: 300;
 
-                strong {
+                span {
                     font-weight: 600;
+
+                    a {
+                        color: ${colors.blackDark};
+                    }
                 }
+            }
+
+            small {
+                font-size: .75rem;
+                font-weight: 400;
+                color: ${colors.gray400};
             }
         }
     }

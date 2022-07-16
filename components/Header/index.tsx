@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { MagnifyingGlass } from 'phosphor-react';
+import { useEffect, useState } from 'react';
 
-import { apiForPersonalInfo } from '../../api';
+import { apiGithub } from '../../api';
 
 import { LogoActivity } from '../Icons/LogoActivity';
 import { LogoFindPeople } from '../Icons/LogoFindPeople';
@@ -9,25 +9,29 @@ import { LogoHome } from '../Icons/LogoHome';
 import { LogoMessenger } from '../Icons/LogoMessenger';
 import { LogoNewPost } from '../Icons/LogoNewPost';
 
+import Link from 'next/link';
 import colors from '../../styles/colors';
 import { Container } from './styles';
 
 export function Header() {
     const [iconProfile, setIconProfile] = useState('');
-    
     useEffect(() => {
-        apiForPersonalInfo.get('')
+        apiGithub.get('')
             .then(response => response.data)
             .then(dataProfileUser => {
                 setIconProfile(dataProfileUser.avatar_url);
             })
             .catch(err => console.error(err));
-    }, [])
+    });
 
     return (
         <Container>
             <div className="content">
-                <h2 className="title">Instafólio</h2>
+                <Link href="/">
+                    <a>
+                        <h2 className="title">Instafólio</h2>
+                    </a>
+                </Link>
 
                 <div className="search-content">
                     <MagnifyingGlass

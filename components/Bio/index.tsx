@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { apiGithub } from '../../api';
+import { IUserGithub } from '../../interfaces';
 
-import { apiForPersonalInfo } from '../../api';
 
 import { Container } from './styles';
 
@@ -14,9 +15,9 @@ export function Bio() {
     const [following, setFollowing] = useState(0);
 
     useEffect(() => {
-        apiForPersonalInfo.get('')
+        apiGithub.get('')
             .then(response => response.data)
-            .then(dataProfileUser => {
+            .then((dataProfileUser: IUserGithub) => {
                 setIconProfile(dataProfileUser.avatar_url);
                 setNameUser(dataProfileUser.login);
                 setPublicRepos(dataProfileUser.public_repos);

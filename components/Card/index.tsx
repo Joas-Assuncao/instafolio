@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CaretDoubleRight } from "phosphor-react";
 import { ContainerCard } from "./styles";
 
@@ -9,7 +10,12 @@ export function Card(props: IRepoProps) {
     return (
         <ContainerCard>
             <strong>{props.nameRepo}</strong>
-            <a href="">Ver mais <CaretDoubleRight size={16} weight="bold" /></a>
+            <Link href={`post/${props.nameRepo}`}>
+                <a>
+                    Ver mais
+                    <CaretDoubleRight size={16} weight="bold" />
+                </a>
+            </Link>
         </ContainerCard>
     )
 }

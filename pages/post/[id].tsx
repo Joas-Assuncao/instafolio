@@ -1,24 +1,36 @@
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { BookmarkSimple, ChatCircle, Heart, PaperPlaneTilt } from 'phosphor-react';
+import { useEffect, useState } from 'react';
+import { apiGithubForRepo } from '../../api';
+import { IRepoGithub } from '../../interfaces';
 
 import { Container } from './styles';
 
 export default function Post() {
     const { query } = useRouter();
+    const [repoData, setRepoData] = useState<IRepoGithub | null>(null);
 
-    console.log(query);
+    useEffect(() => {
+        apiGithubForRepo.get(`/${query.id}`)
+            .then(response => response.data)
+            .then((dataReposUser: IRepoGithub) => setRepoData(dataReposUser))
+            .catch(err => console.error(err));
+    }, []);
 
     return (
         <Container>
             <div className="content">
                 <header>
-                    <img src="https://github.com/Joas-Assuncao.png" alt="Icon profile" />
+                    <img src={repoData?.owner.avatar_url} alt="Icon profile" />
                     <div className="name-location">
-                        <strong>
-                            Joas-Assuncao
-                        </strong>
+                        <span>
+                            <a href={repoData?.owner.html_url} target="_blank">
+                                {repoData?.owner.login}
+                            </a>
+                        </span>
                         <small>
-                            Brasilia - DF
+                            Language with more relevance: {repoData?.language}
                         </small>
                     </div>
                 </header>
@@ -26,20 +38,31 @@ export default function Post() {
                     <img src="/github-background.jpg" alt="Github image" />
                 </div>
                 <footer>
-                    <div className="icons">
-                        <div className="primary-icons">
-                            <Heart size={24} weight="bold" />
-                            {/* <Heart size={24} color="#ed4956" weight="fill" /> */}
-                            <ChatCircle size={24} weight="bold" />
-                            <PaperPlaneTilt size={24} weight="bold" />
+                    <div className="interactions">
+                        <div className="icons">
+                            <div className="primary-icons">
+                                <Heart size={24} weight="bold" />
+                                {/* <Heart size={24} color="#ed4956" weight="fill" /> */}
+                                <ChatCircle size={24} weight="bold" />
+                                <PaperPlaneTilt size={24} weight="bold" />
+                            </div>
+                            <div className="bookmark-icon">
+                                <BookmarkSimple size={24} weight="bold" />
+                            </div>
                         </div>
-                        <div className="bookmark-icon">
-                            <BookmarkSimple size={24} weight="bold" />
+                        <div className="numbers-interactions">
+                            Likes (stars in the repo): {repoData?.stargazers_count}
                         </div>
                     </div>
                     <p>
-                        <strong>Joas-Assuncao</strong> Descrição do repositório Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, dignissimos enim vitae qui debitis nemo commodi doloremque, nostrum repellat, veritatis alias perferendis eaque ad omnis laborum incidunt id! Dolore, debitis?...
+                        <span>
+                            <a href={repoData?.owner.html_url} target="_blank">
+                                {repoData?.owner.login}
+                            </a>
+                        </span> {repoData?.description}
                     </p>
+
+                    <small>{format(new Date(repoData ? repoData.created_at : new Date()), "MMMM d', ' yyyy")}</small>
                 </footer>
             </div>
         </Container>
