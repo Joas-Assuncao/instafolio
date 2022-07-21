@@ -22,6 +22,10 @@ export const ContainerPost = styled.main`
 
             padding: .625rem;
 
+            a {
+                color: ${colors.blackDark};
+            }
+
             img {
                 height: 2.5rem;
                 width: 2.5rem;

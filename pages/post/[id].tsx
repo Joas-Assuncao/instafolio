@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { BookmarkSimple, ChatCircle, Heart, PaperPlaneTilt } from 'phosphor-react';
+import { ArrowLeft, BookmarkSimple, ChatCircle, Heart, PaperPlaneTilt } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
 import { getRepoAPI } from '../../api';
 import { DataUserContext } from '../../contexts/DataUserContext';
@@ -12,7 +13,13 @@ export default function Post() {
     const dataUser = useContext(DataUserContext);
 
     const { query } = useRouter();
+
     const [repoData, setRepoData] = useState<IRepoGithub | null>(null);
+    const [isLike, setIsLike] = useState(false);
+
+    function handleLike() {
+        setIsLike(prevLike => !prevLike);
+    }
 
     useEffect(() => {
         getRepoAPI.get(`/${query.id}`)
@@ -25,6 +32,11 @@ export default function Post() {
         <ContainerPost>
             <div className="content">
                 <header>
+                    <Link href="/">
+                        <a>
+                            <ArrowLeft size={32} />
+                        </a>
+                    </Link>
                     <img src={dataUser?.avatar_url} alt="Icon profile" />
                     <div className="name-location">
                         <span>
@@ -44,8 +56,10 @@ export default function Post() {
                     <div className="interactions">
                         <div className="icons">
                             <div className="primary-icons">
-                                <Heart size={24} weight="bold" />
-                                {/* <Heart size={24} color="#ed4956" weight="fill" /> */}
+                                { isLike ?
+                                    <Heart size={24} color="#ed4956" weight="fill" onClick={handleLike} /> :
+                                    <Heart size={24} weight="bold" onClick={handleLike} />
+                                }
                                 <ChatCircle size={24} weight="bold" />
                                 <PaperPlaneTilt size={24} weight="bold" />
                             </div>
