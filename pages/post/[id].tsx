@@ -6,7 +6,7 @@ import { getRepoAPI } from '../../api';
 import { DataUserContext } from '../../contexts/DataUserContext';
 import { IRepoGithub } from '../../interfaces';
 
-import { Container } from './styles';
+import { ContainerPost } from '../../styles/postStyle';
 
 export default function Post() {
     const dataUser = useContext(DataUserContext);
@@ -22,7 +22,7 @@ export default function Post() {
     }, [query.id]);
 
     return (
-        <Container>
+        <ContainerPost>
             <div className="content">
                 <header>
                     <img src={dataUser?.avatar_url} alt="Icon profile" />
@@ -68,6 +68,6 @@ export default function Post() {
                     <small>{format(new Date(repoData ? repoData.created_at : new Date()), "MMMM d', ' yyyy")}</small>
                 </footer>
             </div>
-        </Container>
+        </ContainerPost>
     );
 }

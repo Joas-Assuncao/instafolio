@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import colors from '../../styles/colors';
+import colors from '../styles/colors';
 
-export const Container = styled.main`
+export const ContainerPost = styled.main`
     display: flex;
     justify-content: center;
     width: 100%;
