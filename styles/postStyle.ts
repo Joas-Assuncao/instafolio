@@ -5,6 +5,7 @@ export const ContainerPost = styled.main`
     display: flex;
     justify-content: center;
     width: 100%;
+    padding: 0 1rem;
 
     div.content {
         display: flex;
@@ -55,8 +56,10 @@ export const ContainerPost = styled.main`
 
         div.container-image {
             img {
-                width: 29.375rem;
-                height: 29.375rem;
+                max-width: 29.375rem;
+                max-height: 29.375rem;
+                width: 100%;
+                height: 100%;
             }
         }
 
@@ -105,6 +108,17 @@ export const ContainerPost = styled.main`
                 font-weight: 400;
                 color: ${colors.gray400};
             }
+        }
+    }
+
+    @media(max-width: 500px) {
+        div.content {
+            div.container-image {
+            img {
+                /* width: 22rem; */
+                /* height: 22rem; */
+            }
+        }
         }
     }
 `;
