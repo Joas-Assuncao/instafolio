@@ -1,5 +1,4 @@
 import { GithubLogo, LinkedinLogo } from 'phosphor-react';
-import React from 'react';
 
 import { ContainerFooter } from './styles';
 

@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import { Bio } from '../components/Bio';
 import { Feed } from '../components/Feed';
-import { ContainerMain } from '../styles';
+import { ContainerMain } from '../styles/global';
 
 const Home: NextPage = () => {
     return (

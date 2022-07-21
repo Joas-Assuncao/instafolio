@@ -2,12 +2,13 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
+import { DataUserProvider } from '../contexts/DataUserContext';
 
-import { GlobalStyles } from '../styles';
+import { GlobalStyles } from '../styles/global';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <>
+        <DataUserProvider>
             <Head>
                 <meta charSet="utf-8" />
                 <link rel="icon" href="/favicon.ico" />
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <GlobalStyles />
             <Footer />
-        </>
+        </DataUserProvider>
     )
 }
 

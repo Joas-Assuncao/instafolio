@@ -1,32 +1,35 @@
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { BookmarkSimple, ChatCircle, Heart, PaperPlaneTilt } from 'phosphor-react';
-import { useEffect, useState } from 'react';
-import { apiGithubForRepo } from '../../api';
+import { useContext, useEffect, useState } from 'react';
+import { getRepoAPI } from '../../api';
+import { DataUserContext } from '../../contexts/DataUserContext';
 import { IRepoGithub } from '../../interfaces';
 
 import { Container } from './styles';
 
 export default function Post() {
+    const dataUser = useContext(DataUserContext);
+
     const { query } = useRouter();
     const [repoData, setRepoData] = useState<IRepoGithub | null>(null);
 
     useEffect(() => {
-        apiGithubForRepo.get(`/${query.id}`)
+        getRepoAPI.get(`/${query.id}`)
             .then(response => response.data)
             .then((dataReposUser: IRepoGithub) => setRepoData(dataReposUser))
             .catch(err => console.error(err));
-    }, []);
+    }, [query.id]);
 
     return (
         <Container>
             <div className="content">
                 <header>
-                    <img src={repoData?.owner.avatar_url} alt="Icon profile" />
+                    <img src={dataUser?.avatar_url} alt="Icon profile" />
                     <div className="name-location">
                         <span>
-                            <a href={repoData?.owner.html_url} target="_blank">
-                                {repoData?.owner.login}
+                            <a href={dataUser?.html_url} target="_blank">
+                                {dataUser?.login}
                             </a>
                         </span>
                         <small>
@@ -56,8 +59,8 @@ export default function Post() {
                     </div>
                     <p>
                         <span>
-                            <a href={repoData?.owner.html_url} target="_blank">
-                                {repoData?.owner.login}
+                            <a href={dataUser?.html_url} target="_blank">
+                                {dataUser?.login}
                             </a>
                         </span> {repoData?.description}
                     </p>

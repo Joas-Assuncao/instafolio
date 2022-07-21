@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { apiGithub } from "../../api";
+import { getUserAPI } from "../../api";
 import { IRepoGithub } from "../../interfaces";
 
 import { PostsIcon } from "../../public/posts";
@@ -13,7 +13,7 @@ export function Feed() {
     const [error, setError] = useState<Boolean>(false);
 
     useEffect(() => {
-        apiGithub.get('/repos')
+        getUserAPI.get('/repos')
             .then(response => response.data)
             .then((dataRepoUser: IRepoGithub[]) => {
                 const reposFiltered = dataRepoUser.filter((repo: IRepoGithub) => !repo.archived);
@@ -29,8 +29,6 @@ export function Feed() {
                 setError(true);
             });
     }, []);
-
-    // console.log({repos});
 
     if(error) {
         return <h1>Algo deu errado nos dados!</h1>

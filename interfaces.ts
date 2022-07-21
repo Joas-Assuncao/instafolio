@@ -1,18 +1,18 @@
 export interface IUserGithub {
     avatar_url: string;
-    login: string;
-    public_repos: number;
+    bio: string;
     followers: number;
     following: number;
-    bio: string;
+    html_url: string;
+    login: string;
     location: string;
+    public_repos: number;
 }
 
 export interface IRepoGithub {
     id: number;
     name: string;
     private: boolean;
-    owner: IOwner;
     html_url: string;
     description: string;
     created_at: Date;
@@ -20,10 +20,4 @@ export interface IRepoGithub {
     language: string;
     topics: any[];
     archived: boolean;
-}
-
-export interface IOwner {
-    login: string;
-    avatar_url: string;
-    html_url: string;
 }

@@ -1,7 +1,6 @@
 import { MagnifyingGlass } from 'phosphor-react';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 
-import { apiGithub } from '../../api';
 
 import { LogoActivity } from '../Icons/LogoActivity';
 import { LogoFindPeople } from '../Icons/LogoFindPeople';
@@ -10,19 +9,12 @@ import { LogoMessenger } from '../Icons/LogoMessenger';
 import { LogoNewPost } from '../Icons/LogoNewPost';
 
 import Link from 'next/link';
+import { DataUserContext } from '../../contexts/DataUserContext';
 import colors from '../../styles/colors';
 import { Container } from './styles';
 
 export function Header() {
-    const [iconProfile, setIconProfile] = useState('');
-    useEffect(() => {
-        apiGithub.get('')
-            .then(response => response.data)
-            .then(dataProfileUser => {
-                setIconProfile(dataProfileUser.avatar_url);
-            })
-            .catch(err => console.error(err));
-    });
+    const dataUser = useContext(DataUserContext);
 
     return (
         <Container>
@@ -54,7 +46,7 @@ export function Header() {
                     <LogoNewPost />
                     <LogoFindPeople />
                     <LogoActivity />
-                    <img alt="Icon profile" style={{ width: '32px', height: '32px', borderRadius: '50%' }} src={iconProfile} />
+                    <img src={dataUser?.avatar_url} alt="Icon profile" style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
                 </nav>
             </div>
         </Container>
