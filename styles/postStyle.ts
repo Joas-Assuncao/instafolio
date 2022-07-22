@@ -90,35 +90,41 @@ export const ContainerPost = styled.main`
                 }
             }
 
-            p {
+            p.description {
                 font-size: .875rem;
                 font-weight: 300;
 
-                span {
+                a {
+                    color: ${colors.blackDark};
+                    
+                    margin-right: .5rem;
+                    
                     font-weight: 600;
-
-                    a {
-                        color: ${colors.blackDark};
-                    }
+                }
+                
+                span {
+                    margin-right: .25rem;
+                    
+                    text-transform: uppercase;
                 }
             }
 
-            small {
+            a.link-to-repo {
+                display: block;
+                color: ${colors.blackDark};
+
+                margin: .5rem 0;
+
+                font-size: .875rem;
+                font-weight: 400;
+            }
+
+            small.date {
+                display: block;
                 font-size: .75rem;
                 font-weight: 400;
                 color: ${colors.gray400};
             }
-        }
-    }
-
-    @media(max-width: 500px) {
-        div.content {
-            div.container-image {
-            img {
-                /* width: 22rem; */
-                /* height: 22rem; */
-            }
-        }
         }
     }
 `;

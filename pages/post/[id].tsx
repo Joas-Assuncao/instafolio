@@ -34,7 +34,7 @@ export default function Post() {
                 <header>
                     <Link href="/">
                         <a>
-                            <ArrowLeft size={32} />
+                            <ArrowLeft size={24} />
                         </a>
                     </Link>
                     <img src={dataUser?.avatar_url} alt="Icon profile" />
@@ -71,15 +71,31 @@ export default function Post() {
                             Likes (stars in the repo): {repoData?.stargazers_count}
                         </div>
                     </div>
-                    <p>
+                    <p className="description">
+                        <a href={dataUser?.html_url} target="_blank">
+                            {dataUser?.login}
+                        </a>
                         <span>
-                            <a href={dataUser?.html_url} target="_blank">
-                                {dataUser?.login}
-                            </a>
-                        </span> {repoData?.description}
+                            {repoData?.name}:
+                        </span>
+                        
+                        {repoData?.description}
+                        
+                        <br />
+                        <br />
+                        <br />
+                        
+                        {
+                            repoData?.topics.map(topic => (
+                                <small>{`#${topic}  `}</small>
+                            ))
+                        }
                     </p>
+                    <a className="link-to-repo" href={repoData?.html_url} target="_blank">
+                        Link para o repositório
+                    </a>
 
-                    <small>{format(new Date(repoData ? repoData.created_at : new Date()), "MMMM d', ' yyyy")}</small>
+                    <small className="date">{format(new Date(repoData ? repoData.created_at : new Date()), "MMMM d', ' yyyy")}</small>
                 </footer>
             </div>
         </ContainerPost>

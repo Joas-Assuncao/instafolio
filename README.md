@@ -14,7 +14,7 @@ It consists of a portfolio for all devs, backend, frontend and anyone who needs 
 
 ### First of all:
 
-- You needs to have a code editor to edit the code!
+- You needs to have a code editor to edit the code! I'm use [VScode](https://code.visualstudio.com/)
 - Have [Github](https://github.com);
 - Have some repos;
 - You need to [generate an auth token](https://github.com/settings/tokens) from github;

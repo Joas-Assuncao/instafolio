@@ -27,6 +27,12 @@ export const GlobalStyles = createGlobalStyle`
     
         background: ${colors.backgroundBody};
     }
+
+    @media(max-width: 500px) {
+        html {
+            font-size: 93.75%;
+        }
+    }
 `;
 
 export const ContainerMain = styled.main`
