@@ -81,14 +81,19 @@ export default function Post() {
                         
                         {repoData?.description}
                         
-                        <br />
-                        <br />
-                        <br />
-                        
                         {
+                            repoData?.topics[0] ? 
+                            <>
+                                <br /><br /><br />
+                            </> :
+                            null
+                        }
+                        {
+                            repoData?.topics ? 
                             repoData?.topics.map(topic => (
                                 <small>{`#${topic}  `}</small>
-                            ))
+                            )) :
+                            null
                         }
                     </p>
                     <a className="link-to-repo" href={repoData?.html_url} target="_blank">
