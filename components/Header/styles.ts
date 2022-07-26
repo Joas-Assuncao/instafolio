@@ -62,6 +62,11 @@ export const Container = styled.header`
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
+
+            a {
+                height: 28px;
+                width: 28px;
+            }
         }
     }
 

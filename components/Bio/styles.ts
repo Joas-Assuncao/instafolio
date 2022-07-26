@@ -26,17 +26,22 @@ export const Container = styled.header`
     .infos {
         display: flex;
         flex-direction: column;
+        gap: 2rem;
         
         .name {
             font-size: 1.75rem;
             font-weight: 300;
-            margin-bottom: 2rem;
+        }
+
+        .description {
+            strong {
+                font-size: 1rem;
+            }
         }
 
         .numbers-github {
             display: flex;
             align-items: center;
-            margin-bottom: 2rem;
 
             div {
                 font-size: 1rem;
@@ -53,8 +58,6 @@ export const Container = styled.header`
 
         .bio {
             max-width: 21.875rem;
-            
-            margin-bottom: 2rem;
 
             font-size: 1rem;
         }

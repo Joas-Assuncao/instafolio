@@ -1,12 +1,9 @@
-import { MagnifyingGlass } from 'phosphor-react';
+import { GithubLogo, LinkedinLogo, MagnifyingGlass } from 'phosphor-react';
 import { useContext } from 'react';
 
 
 import { LogoActivity } from '../Icons/LogoActivity';
-import { LogoFindPeople } from '../Icons/LogoFindPeople';
 import { LogoHome } from '../Icons/LogoHome';
-import { LogoMessenger } from '../Icons/LogoMessenger';
-import { LogoNewPost } from '../Icons/LogoNewPost';
 
 import Link from 'next/link';
 import { DataUserContext } from '../../contexts/DataUserContext';
@@ -42,9 +39,12 @@ export function Header() {
 
                 <nav className="icons">
                     <LogoHome />
-                    <LogoMessenger />
-                    <LogoNewPost />
-                    <LogoFindPeople />
+                    <a target="_blank" href="https://github.com/Joas-Assuncao">
+                        <GithubLogo size={28} color="#272b33" weight="fill" />
+                    </a>
+                    <a target="_blank" href="https://linkedin.com/in/Joas-Assuncao">
+                        <LinkedinLogo size={28} color="#0a66c2" weight="fill" />
+                    </a>
                     <LogoActivity />
                     <img src={dataUser?.avatar_url} alt="Icon profile" style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
                 </nav>

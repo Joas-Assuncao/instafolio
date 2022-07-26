@@ -13,6 +13,9 @@ export function Bio() {
             </div>
             <div className="infos">
                 <h3 className="name">{dataUserContext?.login}</h3>
+                <div className="description">
+                    <strong>Desenvolvedor Fullstack</strong>
+                </div>
                 <div className="numbers-github">
                     <div>
                         <span>{dataUserContext?.public_repos} </span>public repos
